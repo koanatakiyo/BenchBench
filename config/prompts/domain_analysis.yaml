@@ -1,0 +1,167 @@
+# Domain Analysis Prompts for Model Comparison
+# Easy to modify and experiment with different approaches
+
+domain_discovery:
+  system_prompt: |
+    You are an expert academic researcher specializing in analyzing educational content and identifying academic domains.
+
+    Your task is to analyze question-answer examples from a dataset and provide structured insights about the academic domain they belong to.
+
+    You must respond with valid JSON only, no additional text or formatting.
+
+  user_prompt_template: |
+    Analyze these question-answer examples and provide a structured analysis.
+
+    Examples:
+    {sample_text}
+
+    Please provide EXACTLY in this JSON format:
+    {{
+        "domain": "Main academic field (e.g., Computer Science, Mathematics, Psychology)",
+        "subdomain": "Specific area within the domain (e.g., Data Structures, Geometry, Theory of Mind)",
+        "key_topics": ["topic1", "topic2", "topic3", "topic4", "topic5"],
+        "search_queries": [
+            "educational website query 1",
+            "academic resource query 2",
+            "tutorial site query 3",
+            "textbook resource query 4",
+            "learning material query 5"
+        ]
+    }}
+
+    Focus on:
+    1. Identifying the precise academic domain
+    2. Finding the specific subdomain/specialization
+    3. Extracting 5 key concepts that appear frequently
+    4. Creating 5 high-quality search queries for finding educational resources
+
+    Respond only with the JSON object, no additional text.
+
+# Alternative prompt variations for testing
+domain_discovery_v2:
+  system_prompt: |
+    You are an AI assistant that specializes in educational content analysis.
+
+  user_prompt_template: |
+    Based on these Q&A examples, determine:
+    1. Academic domain
+    2. Specific subdomain
+    3. Core topics (5 max)
+    4. Search queries for educational resources (5 max)
+
+    Examples:
+    {sample_text}
+
+    Return as JSON:
+    {{"domain": "...", "subdomain": "...", "key_topics": [...], "search_queries": [...]}}
+
+domain_discovery_detailed:
+  system_prompt: |
+    You are a curriculum designer with expertise in academic taxonomy and educational resource discovery.
+
+  user_prompt_template: |
+    Examine these educational questions and answers. Provide a comprehensive analysis:
+
+    Dataset Examples:
+    {sample_text}
+
+    Generate a structured response in JSON format with:
+
+    {{
+        "domain": "Primary academic discipline (e.g., Computer Science, Mathematics, Psychology, Medicine)",
+        "subdomain": "Specialized area within the domain",
+        "confidence_score": 0.95,
+        "key_topics": [
+            "concept1",
+            "concept2",
+            "concept3",
+            "concept4",
+            "concept5"
+        ],
+        "search_queries": [
+            "authoritative educational websites for [domain]",
+            "[domain] university course materials",
+            "[subdomain] academic textbooks online",
+            "best [domain] learning resources",
+            "[key_topic] tutorial and reference sites"
+        ],
+        "reasoning": "Brief explanation of domain classification"
+    }}
+
+    Requirements:
+    - Domain should be a major academic field
+    - Subdomain should be specific to the question content
+    - Key topics should be technical terms/concepts that appear frequently
+    - Search queries should target high-quality educational resources
+    - Confidence score should reflect certainty of classification
+
+website_quality_evaluation:
+  system_prompt: |
+    You are a web content quality evaluator specializing in educational resources.
+
+  user_prompt_template: |
+    Evaluate these websites for educational quality and relevance to {domain} - {subdomain}:
+
+    Websites to evaluate:
+    {website_list}
+
+    Rate each website on a scale of 1-10 considering:
+    - Authority and credibility
+    - Educational value
+    - Content accuracy
+    - Relevance to domain
+    - User accessibility
+
+    Return JSON:
+    {{
+        "evaluations": [
+            {{
+                "url": "...",
+                "title": "...",
+                "quality_score": 8.5,
+                "authority_score": 9.0,
+                "relevance_score": 8.0,
+                "reasoning": "Brief explanation",
+                "recommendation": "include/exclude/review"
+            }}
+        ],
+        "summary": {{
+            "high_quality_count": 15,
+            "recommended_urls": ["url1", "url2", ...],
+            "excluded_urls": ["url3", "url4", ...]
+        }}
+    }}
+
+# Query generation prompts
+search_query_generation:
+  system_prompt: |
+    You are an expert in academic search and information retrieval.
+
+  user_prompt_template: |
+    Generate high-quality search queries for finding educational resources about:
+
+    Domain: {domain}
+    Subdomain: {subdomain}
+    Key Topics: {key_topics}
+
+    Create 10 diverse search queries targeting:
+    - University course materials
+    - Academic textbooks and references
+    - Educational websites and tutorials
+    - Research papers and documentation
+    - Professional learning resources
+
+    Return as JSON:
+    {{
+        "queries": [
+            "query 1",
+            "query 2",
+            ...
+        ],
+        "query_categories": {{
+            "academic": ["university queries..."],
+            "educational": ["tutorial queries..."],
+            "reference": ["textbook queries..."],
+            "professional": ["industry queries..."]
+        }}
+    }}

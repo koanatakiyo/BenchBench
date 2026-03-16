@@ -1,0 +1,71 @@
+positive_knowledge:
+  instruction: |
+    Given this {fmt} question (modality: {mod}), its context, and the correct answer(s),
+    extract the underlying knowledge in a structured format. Use the context to disambiguate
+    entities, events, and relations, and ground all knowledge in the given materials.
+    Provide concise lists without explanations:
+
+    ### Context (if provided):
+    {context}
+
+    ### Knowledge Domain:
+    [Primary subject area, e.g., Mathematics, Psychology, Computer Science, Medicine]
+
+    ### Knowledge Subdomain:
+    [Specific subfield, e.g., Geometry, Algebra, Cognitive Psychology, Data Structures]
+
+    ### Knowledge Point:
+    [Specific concept being tested - be precise]
+
+    ### Key Principles:
+    [Core rules/laws that apply - one per line]
+
+    ### Definitions:
+    [Essential terms and their meanings - one per line]
+
+    ### Prerequisites:
+    [What knowledge is needed before this - one per line]
+
+    ### Applications:
+    [How this knowledge is used - one per line]
+
+    Keep the original language and be concise.
+
+contradictory_knowledge:
+  instruction: |
+    Given this {fmt} question (modality: {mod}), its context, and incorrect answers,
+    extract the underlying knowledge in a structured format. Emphasize the contrast
+    between correct principles and the misconceptions implied by the incorrect options.
+    Provide concise lists without explanations:
+
+    ### Context (if provided):
+    {context}
+
+    ### Knowledge Domain:
+    [Primary subject area, e.g., Mathematics, Psychology, Computer Science, Medicine]
+
+    ### Knowledge Subdomain:
+    [Specific subfield, e.g., Geometry, Algebra, Cognitive Psychology, Data Structures]
+
+    ### Knowledge Point:
+    [Specific concept that was misunderstood - be precise]
+
+    ### Key Principles:
+    [Correct rules/laws that should apply - one per line]
+
+    ### Definitions:
+    [Essential terms that were misunderstood - one per line]
+
+    ### Prerequisites:
+    [What knowledge is needed before this - one per line]
+
+    ### Applications:
+    [How this knowledge is used correctly - one per line]
+
+    ### Common Misconceptions:
+    [Typical errors in this area - one per line]
+
+    ### Correction Strategies:
+    [How to fix these misconceptions - one per line]
+
+    Keep the original language and be concise.

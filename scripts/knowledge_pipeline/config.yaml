@@ -1,0 +1,136 @@
+# Phase 0 Configuration: Dataset Preparation (Full Dataset Approach)
+
+# Strategy: Use entire datasets (no sampling) since all are relatively small
+# This ensures most representative distribution and simplifies workflow
+
+# Balance validation thresholds
+validation:
+  gini_threshold: 0.3  # Target: balanced distribution across subdomains
+  max_single_subdomain_percentage: 25  # Maximum percentage for any single subdomain
+  min_subdomain_count: 10  # Minimum number of subdomains required for diversity
+
+# Quality check thresholds
+quality_checks:
+  language_purity_threshold: 0.98  # For monolingual splits
+  modality_tolerance: 0.05  # ±5% tolerance for modality distribution
+
+# Dataset-specific configurations
+datasets:
+  csbench:
+    splits:
+      - name: "csbench_cn_valid"
+        path: "data/input_data/csbench/csbench_CN_valid_input.jsonl"
+        language: "Chinese"
+        modality: "Text"
+        expected_size: 236
+        has_existing_labels: true
+        existing_subdomain_field: "background.SubDomain"
+
+      - name: "csbench_cn_test"
+        path: "data/input_data/csbench/csbench_CN_test_input.jsonl"
+        language: "Chinese"
+        modality: "Text"
+        expected_size: 2183
+        has_existing_labels: true
+        existing_subdomain_field: "background.SubDomain"
+
+      - name: "csbench_en_valid"
+        path: "data/input_data/csbench/csbench_EN_valid_input.jsonl"
+        language: "English"
+        modality: "Text"
+        expected_size: 236
+        has_existing_labels: true
+        existing_subdomain_field: "background.SubDomain"
+
+      - name: "csbench_en_test"
+        path: "data/input_data/csbench/csbench_EN_test_input.jsonl"
+        language: "English"
+        modality: "Text"
+        expected_size: 2183
+        has_existing_labels: true
+        existing_subdomain_field: "background.SubDomain"
+
+      - name: "csbench_fr_valid"
+        path: "data/input_data/csbench/csbench_FR_valid_input.jsonl"
+        language: "French"
+        modality: "Text"
+        expected_size: 236
+        has_existing_labels: true
+        existing_subdomain_field: "background.SubDomain"
+
+      - name: "csbench_fr_test"
+        path: "data/input_data/csbench/csbench_FR_test_input.jsonl"
+        language: "French"
+        modality: "Text"
+        expected_size: 2183
+        has_existing_labels: true
+        existing_subdomain_field: "background.SubDomain"
+
+      - name: "csbench_de_valid"
+        path: "data/input_data/csbench/csbench_DE_valid_input.jsonl"
+        language: "German"
+        modality: "Text"
+        expected_size: 236
+        has_existing_labels: true
+        existing_subdomain_field: "background.SubDomain"
+
+      - name: "csbench_de_test"
+        path: "data/input_data/csbench/csbench_DE_test_input.jsonl"
+        language: "German"
+        modality: "Text"
+        expected_size: 2183
+        has_existing_labels: true
+        existing_subdomain_field: "background.SubDomain"
+
+  medxpertqa:
+    splits:
+      - name: "medxpertqa_mm"
+        path: "data/input_data/medxpertqa/medxpertqa_mm_input.jsonl"
+        language: "English"
+        modality: "Multimodal"
+        expected_size: 2000
+        multimodal: true
+
+      - name: "medxpertqa_text"
+        path: "data/input_data/medxpertqa/medxpertqa_text_input.jsonl"
+        language: "English"
+        modality: "Text"
+        expected_size: 2450
+
+  tombench:
+    splits:
+      - name: "tombench_cn"
+        path: "data/input_data/tombench/tombench_CN_input.jsonl"
+        language: "Chinese"
+        modality: "Text"
+        expected_size: 2860
+
+      - name: "tombench_en"
+        path: "data/input_data/tombench/tombench_EN_input.jsonl"
+        language: "English"
+        modality: "Text"
+        expected_size: 2860
+
+  wemath:
+    splits:
+      - name: "wemath"
+        path: "data/input_data/wemath/wemath_input.jsonl"
+        language: "English"
+        modality: "Multimodal"  # All items are visual (geometry problems)
+        expected_size: 1740
+        multimodal: true
+
+# LLM configuration for mini-extraction (Stage 1 oracle)
+llm:
+  oracle_model: "openai"  # "openai", "gemini", "grok", "deepseek", "anthropic", "qwen"
+  fallback_models: ["gemini", "grok"]  # Fallback models if primary fails
+  max_retries: 3
+  timeout: 30  # seconds
+
+# Output paths
+output:
+  base_dir: "outputs/phase0_datasets"
+  characteristics_file: "dataset_characteristics.json"
+  extraction_file: "subdomain_extractions.jsonl"
+  validation_file: "balance_validation.json"
+  quality_check_file: "quality_checks.json"

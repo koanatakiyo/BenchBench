@@ -1,0 +1,279 @@
+stage3:
+  # Add multiple datasets here; each entry declares its designers and output dir.
+  datasets:
+    - dataset: csbench_en
+      output_dir: ../outputs/stage3_answers/csbench_en
+      designers:
+        gpt5mini:
+          designer_model: gpt-5-mini
+          provider_dir: ../outputs/stage2_questions/csbench_en/openai_gpt5mini
+          question_file: ../outputs/stage2_questions/csbench_en/openai_gpt5mini/questions_openai_openai_gpt-5-mini_stage3_clean.jsonl
+        gemini_flash:
+          designer_model: gemini-2.5-flash
+          provider_dir: ../outputs/stage2_questions/csbench_en/gemini-2_5-flash
+          question_file: ../outputs/stage2_questions/csbench_en/gemini-2_5-flash/questions_gemini_gemini_gemini-2_5-flash_stage3_clean.jsonl
+        claude_sonnet_45:
+          designer_model: claude-sonnet-4-5-20250929
+          provider_dir: ../outputs/stage2_questions/csbench_en/claude-sonnet-4-5-20250929
+          question_file: ../outputs/stage2_questions/csbench_en/claude-sonnet-4-5-20250929/questions_anthropic_anthropic_claude-sonnet-4-5-20250929_stage3_clean.jsonl
+        deepseek_chat:
+          designer_model: deepseek-chat
+          provider_dir: ../outputs/stage2_questions/csbench_en/deepseek-chat
+          question_file: ../outputs/stage2_questions/csbench_en/deepseek-chat/questions_deepseek_deepseek_deepseek-chat_stage3_clean.jsonl
+        qwen3_next_80b:
+          designer_model: qwen3-next-80b-a3b-instruct
+          provider_dir: ../outputs/stage2_questions/csbench_en/qwen3-next-80b-a3b-instruct
+          question_file: ../outputs/stage2_questions/csbench_en/qwen3-next-80b-a3b-instruct/questions_qwen_qwen_qwen3-next-80b-a3b-instruct_stage3_clean.jsonl
+        doubao_flash:
+          designer_model: doubao-seed-1.6-flash
+          provider_dir: ../outputs/stage2_questions/csbench_en/doubao-seed-1-6-flash-250828
+          question_file: ../outputs/stage2_questions/csbench_en/doubao-seed-1-6-flash-250828/questions_doubao_doubao_doubao-seed-1-6-flash-250828_stage3_clean.jsonl
+        grok_41_fast:
+          designer_model: grok-4-1-fast
+          provider_dir: ../outputs/stage2_questions/csbench_en/grok-4-1-fast
+          question_file: ../outputs/stage2_questions/csbench_en/grok-4-1-fast/questions_grok_grok_grok-4-1-fast_stage3_clean.jsonl
+        llama4_maverick:
+          designer_model: meta-llama/llama-4-maverick:floor
+          provider_dir: ../outputs/stage2_questions/csbench_en/meta-llama_llama-4-maverick_floor
+          question_file: ../outputs/stage2_questions/csbench_en/meta-llama_llama-4-maverick_floor/questions_llama_llama_meta-llama_llama-4-maverick_floor_stage3_clean.jsonl
+
+  judge_model:
+    
+    display_name: gemini-2.5-pro
+    provider: gemini
+    model: gemini-2.5-pro
+    batch_size: 16
+    max_concurrent_requests: 8
+    temperature: 0.0
+    top_p: 0.9
+    max_new_tokens:
+      default: 2048
+      mcq_single: 512
+      mcq_multi: 960
+      open_ended: 2048
+      structured: 3072
+
+  strong_models:
+    - gpt5mini
+    - claude_sonnet_45
+    - gemini_2_5_flash
+    - qwen3_next_80b
+    - deepseek_chat
+    - grok_41_fast
+    - claude_sonnet_45
+    - doubao_flash
+
+  answer_models:
+    gpt5mini:
+      display_name: gpt-5-mini
+      provider: openai
+      model: gpt-5-mini
+      batch_size: 32
+      max_concurrent_requests: 16
+      temperature: 0.0
+      top_p: 1.0
+      max_new_tokens:
+        default: 1024
+        mcq_single: 192
+        mcq_multi: 320
+        open_ended: 1024
+        structured: 1536
+
+    gpt-4_1-mini:
+      display_name: gpt-4.1-mini
+      provider: openai
+      model: gpt-4.1-mini
+      batch_size: 32
+      max_concurrent_requests: 16
+      temperature: 0.0
+      top_p: 1.0
+      max_new_tokens:
+        default: 1024
+        mcq_single: 192
+        mcq_multi: 320
+        open_ended: 1024
+        structured: 1536
+
+    gpt-4o-mini:
+      display_name: gpt-4o-mini
+      provider: openai
+      model: gpt-4o-mini
+      batch_size: 32
+      max_concurrent_requests: 16
+      temperature: 0.0
+      top_p: 1.0
+      max_new_tokens:
+        default: 1024
+        mcq_single: 192
+        mcq_multi: 320
+        open_ended: 1024
+        structured: 1536
+
+    # gpt5_1:
+    #   display_name: gpt-5.1
+    #   provider: openai
+    #   model: gpt-5-1
+    #   batch_size: 16
+    #   max_concurrent_requests: 8
+    #   temperature: 0.0
+    #   top_p: 1.0
+    #   max_new_tokens:
+    #     default: 96
+    #     mcq_single: 48
+    #     mcq_multi: 64
+    #     open_ended: 96
+    #     structured: 128
+    gemini_2_5_flash:
+      display_name: gemini-2.5-flash
+      provider: gemini
+      model: gemini-2.5-flash
+      batch_size: 32
+      max_concurrent_requests: 16
+      temperature: 0.0
+      top_p: 0.95
+      max_new_tokens:
+        default: 1024
+        mcq_single: 192
+        mcq_multi: 320
+        open_ended: 1024
+        structured: 1536
+    
+    gemini_2_0_flash:
+      display_name: gemini-2.0-flash
+      provider: gemini
+      model: gemini-2.0-flash
+      batch_size: 32
+      max_concurrent_requests: 16
+      temperature: 0.0
+      top_p: 0.95
+      max_new_tokens:
+        default: 1024
+        mcq_single: 192
+        mcq_multi: 320
+        open_ended: 1024
+        structured: 1536
+
+    claude_sonnet_45:
+      display_name: claude-sonnet-4.5
+      provider: anthropic
+      model: claude-sonnet-4-5-20250929
+      batch_size: 32
+      max_concurrent_requests: 12
+      temperature: 0.0
+      top_p: 1.0
+      max_new_tokens:
+        default: 1024
+        mcq_single: 192
+        mcq_multi: 320
+        open_ended: 1024
+        structured: 1536
+
+    deepseek_chat:
+      display_name: deepseek-v3.2-chat
+      provider: deepseek
+      model: deepseek-chat
+      batch_size: 24
+      max_concurrent_requests: 12
+      temperature: 0.0
+      top_p: 1.0
+      extra_body:
+        enable_thinking: false
+      max_new_tokens:
+        default: 768
+        mcq_single: 160
+        mcq_multi: 256
+        open_ended: 768
+        structured: 1024
+
+
+    qwen3_next_80b:
+      display_name: qwen3-next-80b-a3b-instruct
+      provider: qwen
+      model: qwen3-next-80b-a3b-instruct
+      batch_size: 24
+      max_concurrent_requests: 10
+      temperature: 0.0
+      top_p: 0.9
+      max_new_tokens:
+        default: 768
+        mcq_single: 160
+        mcq_multi: 256
+        open_ended: 768
+        structured: 1024
+    
+    qwen3-vl-flash:
+      display_name: qwen3-vl-flash
+      provider: qwen
+      model: qwen3-vl-flash
+      batch_size: 24
+      max_concurrent_requests: 10
+      temperature: 0.0
+      top_p: 0.9
+      max_new_tokens:
+        default: 256
+        mcq_single: 64
+        mcq_multi: 128
+        open_ended: 256
+        structured: 384
+
+
+    doubao_flash:
+      display_name: doubao-seed-1.6-flash
+      provider: doubao
+      model: doubao-seed-1-6-flash
+      batch_size: 24
+      max_concurrent_requests: 10
+      temperature: 0.0
+      top_p: 1.0
+      max_new_tokens:
+        default: 640
+        mcq_single: 128
+        mcq_multi: 224
+        open_ended: 640
+        structured: 960
+
+    grok_41_fast:
+      display_name: grok-4.1-fast
+      provider: grok
+      model: grok-4-1-fast
+      batch_size: 16
+      max_concurrent_requests: 8
+      temperature: 0.0
+      top_p: 1.0
+      max_new_tokens:
+        default: 640
+        mcq_single: 128
+        mcq_multi: 224
+        open_ended: 640
+        structured: 960
+
+    llama4_maverick:
+      display_name: llama-4-maverick
+      provider: llama
+      model: meta-llama/llama-4-maverick:floor
+      batch_size: 24
+      max_concurrent_requests: 10
+      temperature: 0.0
+      top_p: 0.9
+      max_new_tokens:
+        default: 768
+        mcq_single: 160
+        mcq_multi: 256
+        open_ended: 768
+        structured: 1024
+    
+    llama3_3_70b_instruct:
+      display_name: llama-3.3-70b-instruct
+      provider: llama
+      model: meta-llama/llama-3.3-70b-instruct:free
+      batch_size: 24
+      max_concurrent_requests: 10
+      temperature: 0.0
+      top_p: 0.9
+      max_new_tokens:
+        default: 320
+        mcq_single: 96
+        mcq_multi: 192
+        open_ended: 320
+        structured: 480
+

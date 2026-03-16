@@ -1,0 +1,100 @@
+positive_knowledge:
+  instruction: |
+    Étant donné cette question {fmt} (modalité : {mod}), déterminez d'abord si la question nécessite un raisonnement complexe ou peut être résolue directement.
+    
+    ### Processus de décision :
+    - Si la question implique plusieurs concepts, des relations hiérarchiques ou exige une analyse étape par étape → Utiliser le raisonnement en chaîne (Chain-of-Thought)
+    - Si la question est simple, claire, et permet une extraction directe de la connaissance → Utiliser l’approche directe (Direct Approach)
+    
+    **En utilisant le raisonnement en chaîne (questions complexes) :**
+    
+    ### Processus de réflexion :
+    1. Analyser le domaine principal concerné par la question
+    2. Déterminer le sous-domaine spécifique à l’intérieur de ce domaine
+    3. Identifier les points de connaissance fondamentaux testés
+    4. Considérer les relations hiérarchiques entre ces points
+    5. Déterminer combien de niveaux de structure de connaissance sont nécessaires pour une expression complète
+    
+    **En utilisant l’approche directe (questions simples) :**
+    
+    ### Analyse directe :
+    - Identifier le domaine de connaissance principal
+    - Extraire le point de connaissance spécifique
+    - Lister les principes et définitions clés
+    
+    ### Hiérarchie des connaissances :
+    [Selon votre décision, construisez une hiérarchie de connaissances appropriée]
+    
+    ### Domaine de connaissance :
+    [Niveau supérieur : ex. Mathématiques, Psychologie, Informatique]
+    
+    ### Sous-domaine de connaissance :
+    [Deuxième niveau : ex. Géométrie, Algèbre, Psychologie cognitive]
+    
+    ### Point de connaissance :
+    [Troisième niveau : concepts spécifiques]
+    
+    ### Principes de connaissance :
+    [Quatrième niveau : principes fondamentaux soutenant ce point]
+    
+    ### Définitions spécifiques :
+    [Cinquième niveau : définitions et règles précises des termes]
+    
+    ### Prérequis :
+    [Connaissances de base nécessaires avant d’apprendre ce contenu]
+    
+    ### Applications :
+    [Applications concrètes et exemples de cette connaissance]
+    
+    Gardez la langue originale et assurez-vous que la hiérarchie soit claire et logiquement cohérente.
+
+
+contradictory_knowledge:
+  instruction: |
+    Étant donné cette question {fmt} (modalité : {mod}) et les mauvaises réponses, déterminez d'abord si l’analyse de ces options incorrectes nécessite un raisonnement complexe ou peut être faite directement.
+    
+    ### Processus de décision :
+    - Si les mauvaises réponses révèlent des conceptions erronées complexes, plusieurs lacunes de connaissances ou nécessitent une analyse approfondie → Utiliser le raisonnement en chaîne (Chain-of-Thought)
+    - Si les mauvaises réponses montrent des erreurs simples et directes → Utiliser l’approche directe (Direct Approach)
+    
+    **En utilisant le raisonnement en chaîne (conceptions erronées complexes) :**
+    
+    ### Processus de réflexion :
+    1. Analyser le processus de pensée reflété dans les mauvaises options
+    2. Identifier les domaines et niveaux de connaissance impliqués
+    3. Considérer quelle structure de connaissance correcte peut être apprise à partir de ces erreurs
+    4. Déterminer combien de niveaux de connaissances sont nécessaires pour corriger ces erreurs
+    5. Construire un chemin d’apprentissage complet
+    
+    **En utilisant l’approche directe (erreurs simples) :**
+    
+    ### Analyse directe :
+    - Identifier le domaine de connaissance lié à l’erreur
+    - Extraire le point de connaissance erroné
+    - Lister les principes et définitions corrects
+    
+    ### Hiérarchie des connaissances :
+    [Selon votre décision, construisez une hiérarchie de connaissances appropriée]
+    
+    ### Domaine de connaissance :
+    [Niveau supérieur : ex. Mathématiques, Psychologie, Informatique]
+    
+    ### Sous-domaine de connaissance :
+    [Deuxième niveau : ex. Géométrie, Algèbre, Psychologie cognitive]
+    
+    ### Point de connaissance :
+    [Troisième niveau : concepts spécifiques identifiés à partir des erreurs]
+    
+    ### Principes de connaissance :
+    [Quatrième niveau : principes et règles corrects]
+    
+    ### Définitions spécifiques :
+    [Cinquième niveau : termes clés et définitions à comprendre]
+    
+    ### Points d’apprentissage :
+    [Connaissances correctes à retenir à partir des erreurs]
+    
+    ### Applications :
+    [Comment ces connaissances s’appliquent dans d’autres contextes]
+    
+    Gardez la langue originale et assurez-vous que la hiérarchie soit claire et logiquement cohérente.

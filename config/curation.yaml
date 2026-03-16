@@ -1,0 +1,66 @@
+# Website Collection and Curation Configuration
+
+# Domains to collect websites for
+domains:
+  - name: "computer_science"
+    description: "Computer Science and Programming"
+    max_sites: 200
+    priority: 1
+    
+  - name: "medicine"
+    description: "Medical and Health Sciences"
+    max_sites: 150
+    priority: 2
+    
+  - name: "finance"
+    description: "Finance and Economics"
+    max_sites: 150
+    priority: 2
+    
+  - name: "politics"
+    description: "Political Science and Government"
+    max_sites: 100
+    priority: 3
+    
+  - name: "economics"
+    description: "Economics and Business"
+    max_sites: 100
+    priority: 3
+    
+  - name: "technology"
+    description: "Technology and Innovation"
+    max_sites: 100
+    priority: 3
+    
+  - name: "sports"
+    description: "Sports and Athletics"
+    max_sites: 50
+    priority: 4
+
+# Collection settings
+collection:
+  batch_size: 10
+  max_per_domain: 200
+  use_web_search: false  # Set to true when you have web search API
+  use_llm_expansion: true
+
+# Curation settings
+curation:
+  batch_size: 5
+  min_score: 7.0
+  max_sites_per_domain: 50
+  use_cache: true
+  cache_file: "data/curation_cache.json"
+
+# Model routing for different tasks
+model_routing:
+  search_query_generation: "gemini"
+  website_evaluation: "gemini"
+  content_analysis: "openai"
+  summarization: "openai"
+
+# Output settings
+output:
+  curated_sites_file: "data/curated_websites.json"
+  collection_log_file: "data/collection_log.json"
+  curation_report_file: "data/curation_report.json"

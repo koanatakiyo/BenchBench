@@ -1,0 +1,27 @@
+# Core dependencies for BenchBench knowledge pipeline
+# Install with: pip install -r requirements.txt
+
+# LLM provider SDKs (install only the ones you need)
+openai>=1.0.0
+anthropic>=0.30.0
+google-generativeai>=0.8.0
+
+# HTTP client (used by llm_manager for provider calls)
+httpx>=0.27.0
+
+# Configuration
+pyyaml>=6.0
+
+# Async HTTP (used by some pipeline stages)
+aiohttp>=3.9.0
+
+# Progress bars
+tqdm>=4.66.0
+
+# Data handling
+datasets>=2.0.0        # HuggingFace datasets (for loading input benchmarks)
+
+# Optional: local model serving
+# Install separately if using Ollama or vLLM:
+#   pip install ollama
+#   pip install vllm

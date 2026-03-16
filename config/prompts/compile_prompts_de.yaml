@@ -1,0 +1,100 @@
+positive_knowledge:
+
+  instruction: |
+    Étant donné cette question {fmt} (modalité : {mod}) et les mauvaises réponses, déterminez d'abord si l’analyse de ces options incorrectes nécessite un raisonnement complexe ou peut être faite directement.
+    
+    ### Processus de décision :
+    - Si les mauvaises réponses révèlent des conceptions erronées complexes, plusieurs lacunes de connaissances ou nécessitent une analyse approfondie → Utiliser le raisonnement en chaîne (Chain-of-Thought)
+    - Si les mauvaises réponses montrent des erreurs simples et directes → Utiliser l’approche directe (Direct Approach)
+    
+    **En utilisant le raisonnement en chaîne (conceptions erronées complexes) :**
+    
+    ### Processus de réflexion :
+    1. Analyser le processus de pensée reflété dans les mauvaises options
+    2. Identifier les domaines et niveaux de connaissance impliqués
+    3. Considérer quelle structure de connaissance correcte peut être apprise à partir de ces erreurs
+    4. Déterminer combien de niveaux de connaissances sont nécessaires pour corriger ces erreurs
+    5. Construire un chemin d’apprentissage complet
+    
+    **En utilisant l’approche directe (erreurs simples) :**
+    
+    ### Analyse directe :
+    - Identifier le domaine de connaissance lié à l’erreur
+    - Extraire le point de connaissance erroné
+    - Lister les principes et définitions corrects
+    
+    ### Hiérarchie des connaissances :
+    [Selon votre décision, construisez une hiérarchie de connaissances appropriée]
+    
+    ### Domaine de connaissance :
+    [Niveau supérieur : ex. Mathématiques, Psychologie, Informatique]
+    
+    ### Sous-domaine de connaissance :
+    [Deuxième niveau : ex. Géométrie, Algèbre, Psychologie cognitive]
+    
+    ### Point de connaissance :
+    [Troisième niveau : concepts spécifiques identifiés à partir des erreurs]
+    
+    ### Principes de connaissance :
+    [Quatrième niveau : principes et règles corrects]
+    
+    ### Définitions spécifiques :
+    [Cinquième niveau : termes clés et définitions à comprendre]
+    
+    ### Points d’apprentissage :
+    [Connaissances correctes à retenir à partir des erreurs]
+    
+    ### Applications :
+    [Comment ces connaissances s’appliquent dans d’autres contextes]
+    
+    Gardez la langue originale et assurez-vous que la hiérarchie soit claire et logiquement cohérente.
+
+contradictory_knowledge:
+  instruction: |
+    Gegeben ist diese {fmt}-Frage (Modalität: {mod}) und falsche Antworten. Bestimmen Sie zunächst, ob die Analyse dieser falschen Optionen komplexes Denken erfordert oder direkt durchgeführt werden kann.
+    
+    ### Entscheidungsprozess:
+    - Wenn die falschen Optionen komplexe Missverständnisse, mehrere Wissenslücken oder eine tiefgehende Analyse offenbaren → Verwenden Sie Chain-of-Thought
+    - Wenn die falschen Optionen einfache, direkte Missverständnisse zeigen → Verwenden Sie den direkten Ansatz (Direct Approach)
+    
+    **Bei Verwendung von Chain-of-Thought (komplexe Missverständnisse):**
+    
+    ### Denkprozess:
+    1. Analysieren Sie den Denkprozess, der sich in den falschen Optionen widerspiegelt  
+    2. Identifizieren Sie die Wissensgebiete und Ebenen, die in den falschen Optionen enthalten sind  
+    3. Überlegen Sie, welche richtige Wissensstruktur aus den Fehlern gelernt werden kann  
+    4. Bestimmen Sie, wie viele Wissensebenen erforderlich sind, um diese Fehler zu korrigieren  
+    5. Konstruieren Sie einen vollständigen Lernpfad  
+    
+    **Bei Verwendung des direkten Ansatzes (einfache Missverständnisse):**
+    
+    ### Direkte Analyse:
+    - Bestimmen Sie das Wissensgebiet des Missverständnisses  
+    - Extrahieren Sie den spezifischen fehlerhaften Wissenspunkt  
+    - Listen Sie die richtigen Prinzipien und Definitionen auf  
+    
+    ### Wissenshierarchie:
+    [Basierend auf Ihrer Entscheidung eine geeignete Wissenshierarchie konstruieren]  
+    
+    ### Wissensgebiet:
+    [Oberste Ebene: z. B. Mathematik, Psychologie, Informatik]  
+    
+    ### Wissensuntergebiet:
+    [Zweite Ebene: z. B. Geometrie, Algebra, Kognitive Psychologie]  
+    
+    ### Wissenspunkt:
+    [Dritte Ebene: spezifische Konzepte, die aus den Fehlern gelernt werden]  
+    
+    ### Wissensprinzipien:
+    [Vierte Ebene: richtige Prinzipien und Regeln]  
+    
+    ### Genaue Definitionen:
+    [Fünfte Ebene: wichtige Begriffe und Definitionen, die verstanden werden müssen]  
+    
+    ### Lernpunkte:
+    [Korrektes Wissen, das aus den Fehlern gelernt werden sollte]  
+    
+    ### Anwendungen:
+    [Wie dieses Wissen in anderen Kontexten angewendet wird]  
+    
+    Behalten Sie die Originalsprache bei und stellen Sie sicher, dass die Hierarchie klar und logisch aufgebaut ist.

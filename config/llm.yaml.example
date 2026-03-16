@@ -1,0 +1,95 @@
+# LLM Provider Configuration — EXAMPLE
+# Copy this file to config/llm.yaml and fill in your API keys.
+# config/llm.yaml is gitignored; never commit real credentials.
+#
+# You only need to configure the providers you actually plan to use.
+# Each section supports api_key_env (env var name) as the preferred approach.
+
+# OpenAI Configuration
+openai:
+  provider: "openai"              # or "azure", "openai-compatible"
+  base_url: "https://api.openai.com/v1"
+  api_key_env: "OPENAI_API_KEY"   # preferred: name of env var that holds the key
+  api_key: ""                     # fallback: put key directly here (not recommended)
+  model:
+    text: "gpt-4o-mini"
+    vision: "gpt-4o-mini"
+  generation:
+    temperature: 0.1
+
+# Gemini Configuration
+gemini:
+  provider: "gemini"
+  api_key: ""                     # or set GEMINI_API_KEY env var
+  fallback_api_keys: ""           # comma-separated fallback keys (optional)
+  model: "gemini-2.5-flash"
+  rate_limit:
+    rpd_limit: 0                  # 0 = no daily limit enforced
+  generation:
+    temperature: 0.1
+
+# Anthropic (Claude) Configuration
+anthropic:
+  api_key: ""                     # or set ANTHROPIC_API_KEY env var
+  model: "claude-sonnet-4-5-20250929"
+  base_url: "https://api.anthropic.com"
+
+# Grok (xAI) Configuration
+grok:
+  api_key: ""                     # or set XAI_API_KEY env var
+  model: "grok-3-fast"
+  base_url: "https://api.x.ai/v1"
+  timeout: 300
+
+# Ollama Configuration (local, no API key needed)
+ollama:
+  base_url: "http://localhost:11435/v1"
+  model: "qwen3:8b"
+
+# vLLM Configuration (OpenAI-compatible local server)
+vllm:
+  base_url: "http://localhost:8000/v1"
+  model: "meta-llama/Llama-3.3-70B-Instruct"
+  api_key: ""
+  timeout: 600
+  generation:
+    temperature: 0.8
+    max_tokens: 3100
+
+# DeepSeek Configuration
+deepseek:
+  api_key: ""                     # or set DEEPSEEK_API_KEY env var
+  model: "deepseek-chat"
+  base_url: "https://api.deepseek.com/"
+  provider: "deepseek"
+
+# Alibaba DashScope Configuration (also used for Qwen)
+dashscope:
+  api_key: ""                     # or set DASHSCOPE_API_KEY env var
+  model: "qwen-plus"
+  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+
+# Qwen Configuration
+qwen:
+  provider: "dashscope"
+  api_key: ""                     # or set DASHSCOPE_API_KEY env var
+  model: "qwen-plus"
+  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  extra_body:
+    enable_thinking: true
+
+# Doubao (ByteDance) Configuration
+doubao:
+  api_key: ""                     # or set ARK_API_KEY env var
+  model: "doubao-seed-1-6-thinking-250715"
+  base_url: "https://ark.cn-beijing.volces.com/api/v3"
+
+# Llama via OpenRouter
+llama:
+  api_key: ""                     # or set OPENROUTER_API_KEY env var
+  fallback_api_keys: []
+  base_url: "https://openrouter.ai/api/v1"
+  model: "meta-llama/llama-4-maverick:floor"
+  extra_headers:
+    HTTP-Referer: "https://your-site.example"
+    X-Title: "Your Site Name"

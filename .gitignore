@@ -1,0 +1,72 @@
+# Data directories (not versioned)
+data/
+outputs/
+
+# Credentials and API keys — NEVER commit these
+config/llm.yaml
+config/google_api_keys.yaml
+config/google_api_keys.txt
+config/llm_ollama_example.yaml
+
+.env
+.env.*
+!.env.example
+
+# Legacy / deprecated script directories
+scripts/collectors/
+scripts/builders/
+scripts/complier/
+scripts/knowledge_extraction/
+
+# Not needed for public release
+scripts/experiments/
+scripts/analysis/
+
+# All markdown files except root README.md
+**/*.md
+!README.md
+
+# Test/scratch scripts
+**/test_*.py
+
+# Scratch files and generated images in scripts/
+scripts/figuer.py
+scripts/*.png
+
+# Generated domain card visualizations
+domain_cards/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log

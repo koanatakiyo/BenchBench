@@ -1,0 +1,105 @@
+positive_knowledge:
+  instruction: |
+    给定这个 {fmt} 问题 (modality: {mod}), 其上下文以及正确答案,
+    生成统一知识表述和简洁的结构化大纲。
+
+    Context (if provided):
+    {context}
+
+    Options:
+    {options}
+
+    Correct answer(s): {answers}
+
+    --- Unified Knowledge Statement ---
+    写 1-2 段话, 解释情境、因果关系、意图和原理, 并且 仅基于提供的问题、上下文和选项,
+    不要进行超出材料范围的推测。
+
+    --- Structured Outline ---
+
+    Knowledge Domain:
+
+    [主要学科领域, 例如: 数学, 心理学, 计算机科学, 医学]
+
+    Knowledge Subdomain:
+
+    [具体的子领域, 例如: 几何学, 代数学, 认知心理学, 数据结构]
+
+    Knowledge Point:
+
+    [被考察的具体概念 - 要精确]
+
+    Key Principles:
+
+    [适用的核心规则/定律 - 每行一条]
+
+    Definitions:
+
+    [关键术语及其含义 - 每行一条]
+
+    Prerequisites:
+
+    [需要先掌握的知识 - 每行一条]
+
+    Applications:
+
+    [该知识的应用场景 - 每行一条]
+
+    保持原文语言, 简明扼要。
+
+contradictory_knowledge:
+  instruction: |
+    给定这个 {fmt} 问题 (modality: {mod}), 其上下文以及错误答案,
+    生成统一知识表述(澄清正确理解)和简洁的结构化大纲, 强调误解与纠正。
+
+    Context (if provided):
+    {context}
+
+    Options (incorrect shown below):
+    {options}
+
+    Incorrect answers selected: {wrong_answers}
+
+    --- Unified Knowledge Statement ---
+    写 1-2 段话, 澄清正确的解释, 并说明为什么错误选项是错误的。
+    内容必须仅基于提供的问题、上下文和选项。
+
+    --- Structured Outline ---
+
+    Knowledge Domain:
+
+    [主要学科领域...]
+
+    Knowledge Subdomain:
+
+    [具体的子领域...]
+
+    Knowledge Point:
+
+    [被误解的具体概念 - 要精确]
+
+    Key Principles:
+
+    [应当适用的正确规则/定律 - 每行一条]
+
+    Definitions:
+
+    [被误解的关键术语 - 每行一条]
+
+    Prerequisites:
+
+    [需要先掌握的知识 - 每行一条]
+
+    Applications:
+
+    [该知识的正确应用场景 - 每行一条]
+
+    Common Misconceptions:
+
+    [此领域中的典型错误 - 每行一条]
+
+    Correction Strategies:
+
+    [如何纠正这些误解 - 每行一条]
+
+    保持原文语言, 简明扼要。

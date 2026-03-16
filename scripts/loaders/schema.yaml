@@ -1,0 +1,40 @@
+# configs/schema.yaml
+datasets:
+  # Key should match a short "source" prefix you use (e.g., in file names or loader keys)
+  csbench:
+    background_fields: ["Domain", "SubDomain", "Tag"]
+    context_fields: []
+    images:
+      enabled: false
+
+  wemath:
+    background_fields: ["knowledge concept", "knowledge concept description", "key", "question number", "image_path"]
+    context_fields: []
+    tag_fields:        []                       # optional
+    images:
+      enabled: true
+      mode: "prefix_rules"
+      rules:
+        - prefix: "2steps/image/"
+          base: "data/raw_data/wemath/2steps/image"
+          strip_prefix: true
+        - prefix: "3steps/image/"
+          base: "data/raw_data/wemath/3steps/image"
+          strip_prefix: true
+
+  medxpertqa:
+    background_fields: ["question_type", "medical_task", "body_system"]
+    context_fields: []
+    tag_fields:        []                       # optional
+    images:
+      enabled: true
+      mode: "list_of_dicts"
+      dict_key: "image_path"
+      base: "data/raw_data/medxpertqa/images"
+
+  tombench:
+    background_fields: ["abilities"]   # abilities is a list; we’ll stringify/flatten safely
+    context_fields: ["story"]
+    tag_fields:        []                       # optional
+    images:
+      enabled: false

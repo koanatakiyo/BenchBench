@@ -1,0 +1,15 @@
+# Google API Configuration — EXAMPLE
+# Copy this file to config/google_api_keys.yaml and fill in your credentials.
+# config/google_api_keys.yaml is gitignored; never commit real credentials.
+
+google_search:
+  # Google Custom Search API key
+  # Get yours at: https://developers.google.com/custom-search/v1/overview
+  api_key: ""                     # or set GOOGLE_API_KEY env var
+  search_engine_id: ""            # Programmable Search Engine ID
+                                  # Create one at: https://programmablesearchengine.google.com/
+
+# Gemini LLM API (separate from search — configure in llm.yaml instead)
+# gemini:
+#   api_key: ""
+#   model: "gemini-2.5-flash"
