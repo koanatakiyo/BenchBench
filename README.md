@@ -72,9 +72,7 @@ python run_lean_extraction.py \
     --output-dir ../../../outputs/stage1_domains/medxpertqa_mm
 ```
 
-See [stage1/README.md](scripts/knowledge_pipeline/stage1/README.md) for full options.
 
-### Stage 2: Question Generation
 
 Generates 300 benchmark questions per dataset (225 standard + 75 adversarial).
 
@@ -87,7 +85,6 @@ python run_stage2.py \
     --output-dir ../../../outputs/stage2_questions/csbench_en
 ```
 
-See [stage2/README.md](scripts/knowledge_pipeline/stage2/README.md) for full options.
 
 ### Stage 3: Answerer Panel Evaluation
 
@@ -109,7 +106,6 @@ python run_stage3.py \
     --dataset csbench_en
 ```
 
-See [stage3/README.md](scripts/knowledge_pipeline/stage3/README.md) for full options.
 
 ---
 
