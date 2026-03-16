@@ -139,9 +139,3 @@ benchbench/
 │       └── shared/                # Shared utilities
 └── requirements.txt
 ```
-
-## Security Note
-
-API keys are **never** committed to this repository.
-The files `config/llm.yaml`, `config/google_api_keys.yaml`, and `config/google_api_keys.txt`
-are listed in `.gitignore`. Use the `.example` files as templates.
