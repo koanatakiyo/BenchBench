@@ -570,6 +570,8 @@ class AnswerModelCaller:
                 temperature=cfg.temperature,
                 top_p=cfg.top_p,
             )
+        if provider == "zai":
+            return await self._call_zai(cfg, system_prompt, user_prompt, max_new_tokens)
         raise ValueError(f"Unsupported provider '{provider}' for answer model '{cfg.display_name}'.")
 
     async def _call_openai(
@@ -959,6 +961,40 @@ class AnswerModelCaller:
 
         response = await client.chat.completions.create(**kwargs)
         return response.choices[0].message.content
+
+    async def _call_zai(
+        self,
+        cfg: "AnswerModelConfig",
+        system_prompt: str,
+        user_prompt: str,
+        max_new_tokens: int,
+    ) -> str:
+        """Call ZhipuAI (GLM) via the ``zai`` SDK.
+
+        The ZhipuAiClient exposes a synchronous ``chat.completions.create``
+        that mirrors the OpenAI interface, so we wrap it in ``asyncio.to_thread``
+        to keep the event loop responsive.
+        """
+        client = getattr(self.llm, "zai_client", None)
+        if client is None:
+            raise RuntimeError("ZhipuAI (zai) client is not initialized.")
+
+        messages: List[Dict[str, str]] = []
+        if system_prompt:
+            messages.append({"role": "system", "content": system_prompt})
+        messages.append({"role": "user", "content": user_prompt})
+
+        def _sync_call():
+            response = client.chat.completions.create(
+                model=cfg.model,
+                messages=messages,
+                max_tokens=max_new_tokens,
+                temperature=cfg.temperature,
+                thinking={"type": "disabled"},
+            )
+            return response.choices[0].message.content
+
+        return await asyncio.to_thread(_sync_call)
 
 
 # --------------------------------------------------------------------------- #

@@ -47,7 +47,7 @@ class LLMManager:
 
         # Initialize only requested models
         if models_to_init is None:
-            models_to_init = ['openai', 'gemini', 'grok', 'deepseek', 'anthropic', 'qwen', 'ollama', 'vllm']
+            models_to_init = ['openai', 'gemini', 'grok', 'deepseek', 'anthropic', 'qwen', 'ollama', 'vllm', 'zai']
 
         # Initialize API clients based on request
         if 'openai' in models_to_init:
@@ -99,6 +99,11 @@ class LLMManager:
             self._init_vllm()
         else:
             self.vllm_available = False
+
+        if 'zai' in models_to_init:
+            self._init_zai()
+        else:
+            self.zai_available = False
 
         # Rate limiting for Gemini 2.5 Flash
         # Limits: 1000 RPM, 1M TPM, 10K RPD
@@ -562,6 +567,38 @@ class LLMManager:
         except Exception as e:
             self.llama_available = False
             print(f"   Llama4 initialization failed: {e}")
+
+    def _init_zai(self):
+        """Initialize ZhipuAI (GLM) client.
+
+        Uses the ``zai`` package (``pip install zai``).  The client exposes an
+        OpenAI-style ``chat.completions.create`` interface so it can be called
+        uniformly from the stage-3 answerer panel.
+        """
+        try:
+            from zai import ZhipuAiClient
+
+            zai_config = self.config.get("zai", {})
+            api_key = (
+                zai_config.get("api_key")
+                or os.getenv("ZHIPUAI_API_KEY")
+            )
+
+            if api_key:
+                self.zai_client = ZhipuAiClient(api_key=api_key)
+                self.zai_model_name = zai_config.get("model", "glm-5")
+                self.zai_available = True
+                print(f"   ZhipuAI (ZAI) client initialized (model: {self.zai_model_name})")
+            else:
+                self.zai_available = False
+                print("   ZhipuAI API key not found (set zai.api_key or ZHIPUAI_API_KEY)")
+
+        except ImportError:
+            self.zai_available = False
+            print("   zai library not installed - install with: pip install zai")
+        except Exception as e:
+            self.zai_available = False
+            print(f"   ZhipuAI initialization failed: {e}")
 
     # --------------------------- Batch helpers (OpenAI) --------------------------- #
     async def openai_create_batch(
