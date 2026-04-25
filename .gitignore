@@ -70,3 +70,15 @@ Thumbs.db
 
 # Logs
 *.log
+
+
+scripts/knowledge_pipeline/stage2/run_all_models.sh
+scripts/knowledge_pipeline/stage2/run_all_models.sh
+scripts/knowledge_pipeline/stage3/run_stage3_parallel.sh
+scripts/knowledge_pipeline/stage3/run_stage3_terminals.sh
+config/curation.yaml
+
+config/prompts/domain_analysis.yaml
+scripts/knowledge_pipeline/stage2/run_all_models.sh
+scripts/knowledge_pipeline/stage3/run_stage3_parallel.sh
+scripts/knowledge_pipeline/stage3/run_stage3_terminals.sh
